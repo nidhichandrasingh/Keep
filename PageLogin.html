@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        h2{
+            margin: 0px;
+        }
+
+        body{
+            padding: 10px 50px;
+        }
+        form{
+            margin:1rem 0;
+        }
+        
+        .FormDesign{
+            font-size: 20px;
+        }
+        .FormDesign input{
+            padding: 5px 10px;
+            width: 20%;
+            border: 1px solid black;
+            border-radius: 20px;
+            font-size: 14px;
+            margin: 5px;
+        }
+        .label{
+            margin: 2px;
+        }
+        .btn button{
+            background-color: rgb(248, 6, 152);
+            margin:10px 5px;
+            padding:8px 40px;
+            border-radius: 20px;
+            width: 260px;
+            color:#ffffff;
+            font-size: large;
+            border: 2px solid rgb(241, 38, 201);
+        }
+        .bckcolor{
+            height: 5px;
+            width: 80px;
+            background-color: rgb(241, 38, 201);
+        }
+        .signup-link{
+            margin: 5px;
+            font-size: 20px;
+        }
+        .signup-link a{
+            color: rgb(241, 38, 201);
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+        <h2>LOGIN</h2>
+        <div class="bckcolor"></div>
+        <div id="error"></div>
+        <form id="form_login" action="/" method="GET">
+            <div class="FormDesign" id="uName">
+                <label for="UserName" >&nbsp; &nbsp; UserName</label><br>
+                <input type="text" name="Username" id="username" required>
+            </div><br>
+            <div class="FormDesign" id="Pass">
+                <label for="Password" >&nbsp; &nbsp; Password</label><br>
+                <input type="password" name="Password" id="password" required>
+            </div><br>
+            <div class="class"> 
+                <input type="checkbox" name="fcheck">Remember me
+            </div><br>
+            <div class="btn"><button type="submit" onclick="showAlert()">Sign in</button></div>
+            <div class="signup-link">Don't have an account? <a href="#">Sign Up</a></div>
+        </form>
+
+        <script type="text/javascript">
+            function showAlert() {
+                var form_login = document.getElementById("form_login");
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                    if (username.match(pattern)){
+                        form_login.classList.add("valid");
+                        form_login.classList.remove("Invalid");
+                        alert("Your Email Address is Valid");
+                    }
+                    else{
+                        form_login.classList.remove("valid");
+                        form_login.classList.add("Invalid"); 
+                        alert("Your Email Address is InValid");
+                    }
+            
+            
+                if(username != "" && password != "" && username != null && password != null && username.match(pattern))
+                {
+                    alert ("You are signed in successfully!");   
+                    return false;
+                }
+                else 
+                {
+                    alert (" Login Failed!");
+                }
+            }
+        </script>
+    </body>
+    </html>
